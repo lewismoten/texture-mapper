@@ -57,9 +57,9 @@ their serial number and gave them the download link. The script is in
 [`second-life/`](second-life/Texture%20Mapper%20Software%20Registration.lsl). The serial is the
 uppercased characters 5–20 of `SHA1(avatar name + secret)`. The program checks it the same way in
 `AboutBox1.IsValid` and saves the name and serial in the user's registry. I no longer sell it, so the
-secret is published here and anyone can register. The web version has no registration, and its
-**"Still using the Windows version?"** section makes a serial for any name, so the old program can still
-be unlocked. I checked it against the program's own `IsValid` code run under .NET.
+secret is published here and anyone can register. The web version needs no registration. Its **About**
+button opens an About box like the program's, and that box makes a serial for any name, so the old
+program can still be unlocked. I checked it against the program's own `IsValid` code run under .NET.
 
 ## How the Windows source was recovered
 

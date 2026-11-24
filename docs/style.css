@@ -58,11 +58,20 @@ input:focus-visible, select:focus-visible, .btn:focus-visible, canvas:focus-visi
 .about { padding: 8px 20px 24px; color: var(--muted); font-size: 0.85rem; max-width: 900px; }
 .about p { margin: 6px 0; }
 
-.register { margin: 8px 20px 0; max-width: 760px; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; }
-.register h2 { margin: 0 0 6px; font-size: 1.05rem; }
-.register p { margin: 6px 0; font-size: 0.9rem; }
-.register .muted { color: var(--muted); font-size: 0.85rem; }
-.reg-row { display: grid; grid-template-columns: 110px minmax(0, 320px) auto; gap: 8px; align-items: center; margin: 8px 0; }
+.about-box { background: var(--panel); color: var(--text); border: 1px solid var(--line); border-radius: 10px; padding: 16px; width: min(600px, calc(100vw - 24px)); }
+.about-box::backdrop { background: rgba(0, 0, 0, 0.6); }
+.about-grid { display: grid; grid-template-columns: 115px 1fr; gap: 14px 16px; margin: 0; }
+.gravatar { border-radius: 6px; }
+.about-text h2 { margin: 0 0 4px; font-size: 1.15rem; }
+.about-text p { margin: 2px 0; font-size: 0.9rem; }
+.about-text .desc { margin-top: 8px; color: var(--muted); }
+.register { grid-column: 1 / -1; border-top: 1px solid var(--line); padding-top: 10px; }
+.register h3 { margin: 0 0 6px; font-size: 1rem; }
+.register p { margin: 6px 0; font-size: 0.88rem; }
+.register .muted { color: var(--muted); font-size: 0.83rem; }
+.reg-row { display: grid; grid-template-columns: 110px minmax(0, 1fr) 64px; gap: 8px; align-items: center; margin: 8px 0; }
 .reg-row input[type=text] { width: 100%; background: #0f1216; color: var(--text); border: 1px solid var(--line); border-radius: 6px; padding: 6px 8px; font: inherit; }
 .serial { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 1.05rem; letter-spacing: 0.06em; min-height: 1.5em; user-select: all; }
-@media (max-width: 520px) { .reg-row { grid-template-columns: 1fr; } }
+.about-actions { grid-column: 1 / -1; display: flex; justify-content: flex-end; }
+.linklike { background: none; border: 0; padding: 0; font: inherit; color: var(--accent); text-decoration: underline; cursor: pointer; }
+@media (max-width: 520px) { .about-grid { grid-template-columns: 1fr; } .reg-row { grid-template-columns: 1fr; } }

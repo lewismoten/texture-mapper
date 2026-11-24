@@ -59,6 +59,7 @@
         <input id="file" type="file" accept="image/*" hidden>
         <button id="sample" class="btn" type="button">Sample</button>
         <button id="clear" class="btn" type="button" title="Same as double-clicking the image">Clear</button>
+        <button id="about" class="btn" type="button" aria-haspopup="dialog">About</button>
       </div>
       <p id="status" class="status" role="status" aria-live="polite"></p>
 
@@ -83,30 +84,46 @@
     </section>
   </main>
 
-  <section class="register" aria-labelledby="reg-title">
-    <h2 id="reg-title">Still using the Windows version?</h2>
-    <p>The 2010 program asks to be registered: every five minutes it opens its About box, and it closes if you don't register. It's free now, so
-      you can make your own serial number here. Type your name exactly as you'll type it into the
-      program's About box: it must match letter for letter, including capitals and spaces. In 2010 this was
-      your Second Life avatar name, like <em>Dedric Mauriac</em>.</p>
-    <div class="reg-row">
-      <label for="regName">Name</label>
-      <input id="regName" type="text" autocomplete="off" spellcheck="false" placeholder="Your name">
-    </div>
-    <div class="reg-row">
-      <label for="regSerial">Serial number</label>
-      <output id="regSerial" class="serial" aria-live="polite"></output>
-      <button id="regCopy" class="btn small" type="button" disabled>Copy</button>
-    </div>
-    <p id="regStatus" class="status" role="status"></p>
-    <p class="muted">In the program, click <strong>About</strong>, enter the same name and this serial, then
-      click <strong>Register</strong>. The serial is worked out in your browser and nothing is sent anywhere.</p>
-  </section>
+  <dialog id="aboutBox" class="about-box" aria-labelledby="aboutTitle">
+    <form method="dialog" class="about-grid">
+      <img src="gravatar.jpg" alt="Dedric Mauriac" width="115" height="115" class="gravatar">
+      <div class="about-text">
+        <h2 id="aboutTitle">Texture Mapper</h2>
+        <p>Version 1.0.3693.8239 (Windows, February 10, 2010) · web version 2026</p>
+        <p>Copyright © 2008-2010, 2026 Lewis Moten. MIT license.</p>
+        <p>Lewis Moten (in SL: Dedric Mauriac)</p>
+        <p class="desc">Select portions of textures to find numeric offset and scale.</p>
+      </div>
+
+      <section class="register" aria-labelledby="reg-title">
+        <h3 id="reg-title">Register the Windows version</h3>
+        <p>The 2010 program opens its About box every five minutes and closes if you don't register. It's free
+          now, so make your own serial number here. Type your name exactly as you'll type it in the program:
+          capitals and spaces must match. In 2010 this was your Second Life avatar name.</p>
+        <div class="reg-row">
+          <label for="regName">Name</label>
+          <input id="regName" type="text" autocomplete="off" spellcheck="false" placeholder="Your name">
+          <span></span>
+        </div>
+        <div class="reg-row">
+          <label for="regSerial">Serial Number</label>
+          <output id="regSerial" class="serial" aria-live="polite"></output>
+          <button id="regCopy" class="btn small" type="button" disabled>Copy</button>
+        </div>
+        <p id="regStatus" class="status" role="status"></p>
+        <p class="muted">In the program, click <strong>About</strong>, enter the same name and serial number, then
+          click <strong>Register</strong>. The serial is worked out in your browser; nothing is sent anywhere.</p>
+      </section>
+
+      <div class="about-actions"><button class="btn" value="ok" autofocus>OK</button></div>
+    </form>
+  </dialog>
 
   <footer class="about">
     <p><strong>Texture Mapper</strong> began as a Windows program I wrote in 2008 and released in 2010 for
       building in Second Life: use one uploaded texture on many faces, which saved upload fees and loaded
-      faster. This web version does the same math in the browser.
+      faster. This web version does the same math in the browser. Still using the Windows version? Click
+      <button id="aboutLink" class="linklike" type="button">About</button> to make a serial number.
       <a href="https://github.com/lewismoten/texture-mapper">Source on GitHub</a> (MIT).</p>
     <p>From the blog:
       <a href="https://dedricmauriac.wordpress.com/2008/08/06/texture-mapper/">Texture Mapper</a> (2008),

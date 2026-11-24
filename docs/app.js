@@ -267,6 +267,18 @@ $('copy').addEventListener('click', async () => {
   }
 });
 
+// ---------- About box (like the Windows program's About button) ----------
+function openAbout() {
+  $('aboutBox').showModal();
+  $('regName').focus();
+}
+$('about').addEventListener('click', openAbout);
+$('aboutLink').addEventListener('click', openAbout);
+// Enter in the name box should not close the box.
+$('regName').addEventListener('keydown', (e) => { if (e.key === 'Enter') e.preventDefault(); });
+// Click outside the box closes it.
+$('aboutBox').addEventListener('click', (e) => { if (e.target === $('aboutBox')) $('aboutBox').close(); });
+
 // ---------- serial numbers for the old Windows program ----------
 let regSeq = 0;
 $('regName').addEventListener('input', async () => {
