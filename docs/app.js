@@ -1,6 +1,7 @@
 import {
   MAPPING, valuesFromSelection, selectionFromValues, findAction, applyDrag, CURSORS, fmt, lslSnippet,
 } from './mapper.js';
+import { serialFor } from './registration.js';
 
 const $ = (id) => document.getElementById(id);
 const canvas = $('canvas');
@@ -263,6 +264,33 @@ $('copy').addEventListener('click', async () => {
     getSelection().removeAllRanges();
     getSelection().addRange(range);
     status('Select the line above and copy it (Ctrl+C or Cmd+C).');
+  }
+});
+
+// ---------- serial numbers for the old Windows program ----------
+let regSeq = 0;
+$('regName').addEventListener('input', async () => {
+  const name = $('regName').value;
+  const seq = ++regSeq;
+  const serial = await serialFor(name);
+  if (seq !== regSeq) return; // a newer keystroke already answered
+  $('regSerial').textContent = serial;
+  $('regCopy').disabled = !serial;
+  $('regStatus').textContent = name !== name.trim()
+    ? 'Note: the name starts or ends with a space. The program counts spaces, so type it the same way there.'
+    : '';
+  $('regStatus').classList.remove('error');
+});
+$('regCopy').addEventListener('click', async () => {
+  try {
+    await navigator.clipboard.writeText($('regSerial').textContent);
+    $('regStatus').textContent = 'Copied the serial number.';
+  } catch {
+    const range = document.createRange();
+    range.selectNodeContents($('regSerial'));
+    getSelection().removeAllRanges();
+    getSelection().addRange(range);
+    $('regStatus').textContent = 'Select the serial and copy it (Ctrl+C or Cmd+C).';
   }
 });
 

@@ -83,6 +83,26 @@
     </section>
   </main>
 
+  <section class="register" aria-labelledby="reg-title">
+    <h2 id="reg-title">Still using the Windows version?</h2>
+    <p>The 2010 program asks to be registered: every five minutes it opens its About box, and it closes if you don't register. It's free now, so
+      you can make your own serial number here. Type your name exactly as you'll type it into the
+      program's About box: it must match letter for letter, including capitals and spaces. In 2010 this was
+      your Second Life avatar name, like <em>Dedric Mauriac</em>.</p>
+    <div class="reg-row">
+      <label for="regName">Name</label>
+      <input id="regName" type="text" autocomplete="off" spellcheck="false" placeholder="Your name">
+    </div>
+    <div class="reg-row">
+      <label for="regSerial">Serial number</label>
+      <output id="regSerial" class="serial" aria-live="polite"></output>
+      <button id="regCopy" class="btn small" type="button" disabled>Copy</button>
+    </div>
+    <p id="regStatus" class="status" role="status"></p>
+    <p class="muted">In the program, click <strong>About</strong>, enter the same name and this serial, then
+      click <strong>Register</strong>. The serial is worked out in your browser and nothing is sent anywhere.</p>
+  </section>
+
   <footer class="about">
     <p><strong>Texture Mapper</strong> began as a Windows program I wrote in 2008 and released in 2010 for
       building in Second Life: use one uploaded texture on many faces, which saved upload fees and loaded
