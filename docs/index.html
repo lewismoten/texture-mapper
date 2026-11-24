@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Texture Mapper</title>
+  <meta name="description" content="Select part of a texture and get the Second Life repeats and offsets for it. Runs entirely in your browser.">
+  <link rel="icon" href="favicon.ico">
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <header class="top">
+    <h1><img src="favicon.ico" alt="" width="20" height="20"> Texture Mapper</h1>
+    <p class="tag">Drag a box around part of a texture to get the Second Life repeats and offset for it.
+      Your image never leaves your browser.</p>
+  </header>
+
+  <main class="layout">
+    <aside class="panel" aria-label="Settings">
+      <label class="field">
+        <span class="label">Mapping</span>
+        <select id="mapping">
+          <option value="default">Default</option>
+          <option value="planar">Planar</option>
+        </select>
+      </label>
+
+      <fieldset>
+        <legend>Repeats per face</legend>
+        <div class="row">
+          <label for="repeatsU">Horizontal (U)</label>
+          <input id="repeatsU" type="number" step="0.1" min="0" max="100" inputmode="decimal">
+          <label class="flip"><input id="flipU" type="checkbox"> Flip</label>
+        </div>
+        <div class="row">
+          <label for="repeatsV">Vertical (V)</label>
+          <input id="repeatsV" type="number" step="0.1" min="0" max="100" inputmode="decimal">
+          <label class="flip"><input id="flipV" type="checkbox"> Flip</label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Offset</legend>
+        <div class="row">
+          <label for="offsetU">Horizontal (U)</label>
+          <input id="offsetU" type="number" step="0.1" min="-1" max="1" inputmode="decimal">
+          <span></span>
+        </div>
+        <div class="row">
+          <label for="offsetV">Vertical (V)</label>
+          <input id="offsetV" type="number" step="0.1" min="-1" max="1" inputmode="decimal">
+          <span></span>
+        </div>
+      </fieldset>
+
+      <div class="buttons">
+        <label class="btn" for="file">Load image</label>
+        <input id="file" type="file" accept="image/*" hidden>
+        <button id="sample" class="btn" type="button">Sample</button>
+        <button id="clear" class="btn" type="button" title="Same as double-clicking the image">Clear</button>
+      </div>
+      <p id="status" class="status" role="status" aria-live="polite"></p>
+
+      <div class="preview-wrap">
+        <span class="label">Preview</span>
+        <canvas id="preview" width="220" height="220" aria-label="Preview of the selected area"></canvas>
+      </div>
+
+      <div class="lsl">
+        <span class="label">LSL</span>
+        <code id="lsl"></code>
+        <button id="copy" class="btn small" type="button">Copy</button>
+      </div>
+    </aside>
+
+    <section class="stage" aria-label="Texture">
+      <div id="drop" class="drop">
+        <canvas id="canvas" tabindex="0" aria-label="Texture. Drag to select an area; arrow keys move the selection, Shift+arrows resize it."></canvas>
+      </div>
+      <p class="hint">Drag to select. Drag an edge or corner to resize, or the middle to move. Double-click to clear.
+        Arrow keys nudge the box one pixel (Alt: ten); Shift+arrows resize it. You can also drop or paste an image here.</p>
+    </section>
+  </main>
+
+  <footer class="about">
+    <p><strong>Texture Mapper</strong> began as a Windows program I wrote in 2008 and released in 2010 for
+      building in Second Life: use one uploaded texture on many faces, which saved upload fees and loaded
+      faster. This web version does the same math in the browser.
+      <a href="https://github.com/lewismoten/texture-mapper">Source on GitHub</a> (MIT).</p>
+    <p>From the blog:
+      <a href="https://dedricmauriac.wordpress.com/2008/08/06/texture-mapper/">Texture Mapper</a> (2008),
+      <a href="https://dedricmauriac.wordpress.com/2008/08/07/texture-mapper-flipping/">Texture Mapper Flipping</a> (2008),
+      <a href="https://dedricmauriac.wordpress.com/2010/02/10/texture-mapper-released-2/">Texture Mapper Released</a> (2010),
+      <a href="https://dedricmauriac.wordpress.com/2010/04/13/texturemapper-examples/">Texture Mapper Examples</a> (2010).</p>
+  </footer>
+</body>
+</html>
