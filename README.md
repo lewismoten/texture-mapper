@@ -1,5 +1,7 @@
 # Texture Mapper
 
+![Texture Mapper: textures for Second Life builds. Repeats and offsets.](docs/images/social-preview.png)
+
 A small tool for Second Life builders. Load a texture, drag a box around the part you want on a face,
 and it gives you the **repeats per face** and **offset** to type into Second Life's texture settings,
 with a preview of the result. I wrote it as a Windows program in 2008 and released it in 2010. It's free
